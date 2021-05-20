@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/workshop-symfony-testing/static/js/main.26057ea7.chunk.js",
+    "main.js.map": "/workshop-symfony-testing/static/js/main.26057ea7.chunk.js.map",
+    "runtime~main.js": "/workshop-symfony-testing/static/js/runtime~main.240954c7.js",
+    "runtime~main.js.map": "/workshop-symfony-testing/static/js/runtime~main.240954c7.js.map",
+    "static/js/2.f9401686.chunk.js": "/workshop-symfony-testing/static/js/2.f9401686.chunk.js",
+    "static/js/2.f9401686.chunk.js.map": "/workshop-symfony-testing/static/js/2.f9401686.chunk.js.map",
+    "index.html": "/workshop-symfony-testing/index.html",
+    "precache-manifest.1d7ed4431be29041c31d0722260291c2.js": "/workshop-symfony-testing/precache-manifest.1d7ed4431be29041c31d0722260291c2.js",
+    "service-worker.js": "/workshop-symfony-testing/service-worker.js"
+  }
+}
