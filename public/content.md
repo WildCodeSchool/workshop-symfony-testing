@@ -1,10 +1,10 @@
 # Symfony Testing Workshop
 
-## Automate a Symfony project tests using functional (and some unit) tests
+## Automate tests in a Symfony project using functional (and some unit) tests
 
 #### Walkthrough
 
-Cross the following steps one by one and improve your testing skills
+Cross the following steps one by one and improve your testing skills!
 
 #### The context
 
@@ -14,18 +14,15 @@ It helps raise the code quality and robustness, find bugs before going to produc
 
 In this workshop, we will use the Symfony testing toolbox to write what the Symfony documentation calls :
 
-- **Unit tests**
-: Tests for a standalone piece of code
+**Unit tests** : Tests for a standalone piece of code
 
-- **Integration tests**
-: Tests for non-autonomous services' methods that depends on other services to work
+**Integration tests** : Tests for non-autonomous services' methods that depends on other services to work
 
-- **Application tests**
-: Tests for a complete functionality from the HTTP Request to the HTTP Response
+**Application tests** : Tests for a complete functionality from the HTTP Request to the HTTP Response
 
 #### First: let's read some fine manuals
 
-Here's some useful resources that will help you through the process
+Here are some useful resources that will help you through the process :
 
 - [The phpunit documentation](https://phpunit.readthedocs.io/)
 - [The Symfony testing documentation](https://symfony.com/doc/current/testing.html)
@@ -37,26 +34,28 @@ Take a first look at [the Symfony testing page](https://symfony.com/doc/current/
 We need a project to write tests in.
 In this workshop, we will re-use the checkpoint 3.
 
-Let's adopt a TDD approach:
+Let's adopt a TDD (Test Driven Developpement) approach:
 
 1. Use an undone version of the checkpoint 3
-2. write tests
-3. launch them to check that they fail
-4. then write code solving the problem
-5. and pass the tests (hopefully)
+2. Write tests
+3. Launch them to check that they fail
+4. Then write code solving the problem
+5. And pass the tests (hopefully)
 
-To do so, you should get back your own local git repository of the checkpoint 3 then :
+To do so, you should get back your own local git repository of the checkpoint 3, then :
 
-1. Checkout to the master/main branch to reposition your repository in it's original state
+1. Checkout to the master/main branch to reposition your repository in its original state
 2. Create a new branch from master/main for your new TDD solution
 
 You could also make a new clone of the remote github repository.
+
+> Reminder : the goal of TDD is to write tests for a specific feature before we code said feature, so it's only logical that the tests should fail right after we wrote them (and so before we code the actual feature).
 
 #### Install the toolbox
 
 Use composer to install phpunit/phpunit & symfony/test-pack.
 
-Follow the first section of the [Symfony doc](https://symfony.com/doc/current/testing.html#the-phpunit-testing-framework)
+Follow the first section of the [Symfony doc](https://symfony.com/doc/current/testing.html#the-phpunit-testing-framework).
 
 #### Configure a test database
 
@@ -67,8 +66,6 @@ It differs from your usual *dev* environment and has a specific configuration st
 So your `.env.local` file will **not** be used.
 
 You have to configure a `env.test` file (for global configuration) and/or a `.env.test.local` (for your local configuration) to access a test database.
-
-A standard `.env.test` file should have been created by Symfony flex and will do for now.
 
 Now, let's configure a test database to run our tests on a separate dataset:
 
@@ -92,7 +89,7 @@ It's a common best practice to have the same structure in `tests` and `src` havi
 
 Your job :
 
-- Create an (empty for now) `App\Tests\Controller\BoatControllerTest` class in the `tests/Controller/BoatControllerTest.php` file for your tests
+- Create an (empty for now) `App\Tests\Controller\BoatControllerTest` class in the `tests/Controller/BoatControllerTest.php` file for your tests.
 
 This class will host not only unit tests but application tests also. So it needs to extends the `Symfony\Bundle\FrameworkBundle\Test\WebTestCase`.
 
@@ -100,7 +97,7 @@ See: [the application test section](https://symfony.com/doc/current/testing.html
 
 > **Warning** : The maker bundle version of the checkpoint 3 repository may not be up-to-date with the Symfony documentation.
 >
-> The `make:test` console command does not exists. Use `make:functional-test` instead or write your class manually. 
+> The `make:test` console command does not exist. Use `make:functional-test` instead or write your class manually. 
 
 #### Test the moveDirection controller
 
@@ -117,25 +114,25 @@ See: [the application test section](https://symfony.com/doc/current/testing.html
 > - You could use [test dependencies](https://phpunit.readthedocs.io/en/9.5/writing-tests-for-phpunit.html#test-dependencies) to test for wrong directions only if `moveDirection()` exists.
 > - Use a [data provider](https://phpunit.readthedocs.io/en/9.5/writing-tests-for-phpunit.html#data-providers) method to run one test method on multiple cases.
 
-3. Add an application test to check that the four valid directions redirects to /map with a 302 status code.
-4. And _of course_ run you tests, check for failure, write your code and re-run until the tests pass
+3. Add an application test to check that the four valid directions redirect to /map with a 302 status code.
+4. And _of course_ run you tests, check for failure, write your code and re-run until the tests pass.
 
 #### Improved moveDirection tests (optional)
 
-4. (optional) You could use the [DAMADoctrineTestBundle](https://github.com/dmaicher/doctrine-test-bundle) to ensure that you tests are independants (don't change the database).
+4. (optional) You could use the [DAMADoctrineTestBundle](https://github.com/dmaicher/doctrine-test-bundle) to ensure that you tests are independant (don't change the database).
 5. (optional) Add an application test to check that there is a boat (a node with a .boat class) on the result page after a valid move.
 6. (optional) Add an application test to check the arrival coordinates after a valid move (Coordinates are displayed in div before the boat image).
 
 #### Test the presence of naviguation links on the map
 
-1. Create a tests/Controller/MapControllerTest.php class for your new tests
-2. Add an application test to check the presence of four links in the navigation menu
+1. Create a tests/Controller/MapControllerTest.php class for your new tests.
+2. Add an application test to check the presence of four links in the navigation menu.
 
 > Hint :
 >
-> - Take a look at the `DOMCrawler` and it's `filter()` method in the [application test doc](https://symfony.com/doc/current/testing.html#write-your-first-application-test).
+> - Take a look at the `DOMCrawler` and its `filter()` method in the [application test doc](https://symfony.com/doc/current/testing/dom_crawler.html).
 
-3. (optional) Add an application test to check the presence of links with an href attribute for each of the four possible directions
+3. (optional) Add an application test to check the presence of links with an href attribute for each of the four possible directions.
 
 #### Testing the MapManager service
 
@@ -143,17 +140,17 @@ The next checkpoint question is about a `tileExists()` method in a brand new `Ma
 
 This service will need another service (the `TileRepository`) to function properly. So we'll need Symfony's integration test features to boot the `Kernel` and access the `Service Container`.
 
-To do so, classes that contain integration tests need to extends the `Symfony\Bundle\FrameworkBundle\Test\KernelTestCase`.
+To do so, classes that contain integration tests need to extend the `Symfony\Bundle\FrameworkBundle\Test\KernelTestCase`.
 
 More info in the [integration tests section](https://symfony.com/doc/current/testing.html#integration-tests) of the Symfony doc.
 
-1. Create a tests/Service/MapManagerTest.php class for your new tests
-2. Add a unit test to check the existance of a App\Service\MapManager class
+1. Create a tests/Service/MapManagerTest.php class for your new tests.
+2. Add a unit test to check the existance of a App\Service\MapManager class.
 
 > Hint: Take a look at the [class_exists](https://www.php.net/manual/en/function.class-exists) PHP function.
 
-3. Add a unit test to check the existance of a tileExists method in the App\Service\MapManager class
-3. Add an integration test to check that all valid tile coordinates (from (0,0) to (11,5)) returns true
+3. Add a unit test to check the existence of a tileExists method in the App\Service\MapManager class.
+3. Add an integration test to check that all valid tile coordinates (from (0,0) to (11,5)) returns true.
 
 > Hint: a specific section in the doc shows [how to retrieve services](https://symfony.com/doc/current/testing.html#retrieving-services-in-the-test) in a test class.
 
