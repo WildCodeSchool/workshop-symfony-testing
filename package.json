@@ -1,6 +1,6 @@
 {
-  "homepage": "https://wildcodeschool.github.io/workshop-template",
-  "name": "workshop-template",
+  "homepage": "https://wildcodeschool.github.io/workshop-symfony-testing",
+  "name": "workshop-symfony-testing",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
