@@ -130,7 +130,7 @@ See: [the application test section](https://symfony.com/doc/current/testing.html
 
 > Hint :
 >
-> - Take a look at the `DOMCrawler` and its `filter()` method in the [application test doc](https://symfony.com/doc/current/testing/dom_crawler.html).
+> - Take a look at the `DOMCrawler` and its `filter()` method in the [application test doc](https://symfony.com/doc/current/testing.html#write-your-first-application-test).
 
 3. (optional) Add an application test to check the presence of links with an href attribute for each of the four possible directions.
 
